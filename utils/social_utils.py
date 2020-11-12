@@ -147,14 +147,14 @@ def collect_data(set_name, dataset_type = 'image', batch_size=36, time_thresh=48
 
 def generate_pooled_data(b_size, t_tresh, d_tresh, train=True, scene=None, verbose=True):
 	if train:
-		full_train= collect_data("train", batch_size=44, time_thresh=t_tresh, dist_tresh=d_tresh, scene=scene, verbose=verbose)
+		full_train= collect_data("train", batch_size=36, time_thresh=t_tresh, dist_tresh=d_tresh, scene=scene, verbose=verbose)
 		print(full_train.shape)
 		train_name = "/content/drive/My Drive/Copy of PECNet - SR/social_pool_data/train_{0}_{1}_{2}_{3}.pickle".format('all' if scene is None else scene[:-2] + scene[-1], b_size, t_tresh, d_tresh)
 		with open(train_name, 'wb') as f:
 			pickle.dump(full_train, f)
 
 	if not train:
-		full_train= collect_data("train", batch_size=40, time_thresh=t_tresh, dist_tresh=d_tresh, scene=scene, verbose=verbose)
+		full_train= collect_data("train", batch_size=36, time_thresh=t_tresh, dist_tresh=d_tresh, scene=scene, verbose=verbose)
 		print(full_train.shape)
 		train_name = "/content/drive/My Drive/Copy of PECNet - SR/social_pool_data/test_{0}_{1}_{2}_{3}.pickle".format('all' if scene is None else scene[:-2] + scene[-1], b_size, t_tresh, d_tresh)
 		with open(train_name, 'wb') as f:
@@ -203,4 +203,4 @@ We've provided pickle files, but to generate new files for different datasets or
 Parameter1: batchsize, Parameter2: time_thresh, Param3: dist_thresh
 """
 
-generate_pooled_data(44,0,25, train=True, verbose=True)
+#generate_pooled_data(36,0,25, train=True, verbose=True)
